@@ -3,7 +3,8 @@ import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-
 import { FontAwesome6, Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 
-const LoginScreen = () => {
+const SignupScreen = () => {
+    const [fullName, setFullName] = useState<string>('');
     const [mailAddress, setMailAddress] = useState<string>('');
     const [focusedInput, setFocusedInput] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -17,6 +18,21 @@ const LoginScreen = () => {
             showsVerticalScrollIndicator={false}
         >
             <View style={{ alignItems: 'flex-start', width: '100%' }}>
+
+                <Text style={styles.label}>Full Name</Text>
+                <View style={[styles.inputWrapper, focusedInput === 'name' && styles.focusedInputWrapper]}>
+                    <Ionicons name="person-outline" size={22} color="black" style={styles.inputIcon} />
+                    <TextInput
+                        placeholder="John Doe"
+                        value={fullName}
+                        onChangeText={setFullName}
+                        onFocus={() => setFocusedInput('name')}
+                        onBlur={() => setFocusedInput('')}
+                        placeholderTextColor="black"
+                        autoCapitalize="words"
+                        style={styles.input}
+                    />
+                </View>
 
                 <Text style={styles.label}>Email Address</Text>
                 <View style={[styles.inputWrapper, focusedInput === 'email' && styles.focusedInputWrapper]}>
@@ -56,12 +72,8 @@ const LoginScreen = () => {
                     </Pressable>
                 </View>
 
-                <Pressable onPress={() => alert("forgot password")}>
-                    <Text style={styles.forgotPassword}>Forgot password!</Text>
-                </Pressable>
-
-                <Pressable style={({ pressed }) => [styles.loginButton, pressed && styles.loginButtonPressed]}>
-                    <Text style={styles.continueText}>Login</Text>
+                <Pressable style={({ pressed }) => [styles.signupButton, pressed && styles.signupButtonPressed]}>
+                    <Text style={styles.continueText}>Sign Up</Text>
                 </Pressable>
             </View>
 
@@ -71,18 +83,17 @@ const LoginScreen = () => {
                 <View style={styles.separatorLine} />
             </View>
 
-            {/* social login buttons */}
             <View style={styles.socialButtonsContainer}>
 
-                <Pressable onPress={() => alert("facebook signin")} style={styles.socialButtons}>
+                <Pressable onPress={() => alert("facebook signup")} style={styles.socialButtons}>
                     <FontAwesome6 name="facebook-f" size={24} color="black" />
                 </Pressable>
 
-                <Pressable onPress={() => alert("google signin")} style={styles.socialButtons}>
+                <Pressable onPress={() => alert("google signup")} style={styles.socialButtons}>
                     <FontAwesome6 name="google" size={24} color="black" />
                 </Pressable>
 
-                <Pressable onPress={() => alert("instagram signin")} style={styles.socialButtons}>
+                <Pressable onPress={() => alert("instagram signup")} style={styles.socialButtons}>
                     <FontAwesome6 name="instagram" size={24} color="black" />
                 </Pressable>
             </View>
@@ -90,7 +101,7 @@ const LoginScreen = () => {
     )
 }
 
-export default LoginScreen
+export default SignupScreen
 
 const styles = StyleSheet.create({
     scroll: {
@@ -132,14 +143,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderColor: "black",
     },
-    forgotPassword: {
-        color: "#151515",
-        fontSize: 14,
-        fontWeight: "700",
-        marginTop: 2,
-        marginBottom: 4,
-    },
-    loginButton: {
+    signupButton: {
         height: 50,
         width: "100%",
         alignItems: "center",
@@ -156,7 +160,7 @@ const styles = StyleSheet.create({
         shadowRadius: 12,
         elevation: 5,
     },
-    loginButtonPressed: {
+    signupButtonPressed: {
         opacity: 0.85,
     },
     continueText: {

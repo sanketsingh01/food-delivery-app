@@ -27,7 +27,7 @@ const GetStartedScreen = () => {
                     Ask not what you can do for your country, Ask what&apos;s for lunch.
                 </Text>
 
-                <Pressable onPress={() => navigation.navigate("Login")} style={({ pressed }) => [styles.continueButton, pressed && styles.continueButtonPressed]}>
+                <Pressable onPress={() => navigation.navigate("Auth")} style={({ pressed }) => [styles.continueButton, pressed && styles.continueButtonPressed]}>
                     <Text style={styles.continueText}>Continue</Text>
                 </Pressable>
             </View>
