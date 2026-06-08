@@ -1,4 +1,5 @@
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { FontAwesome6, Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
@@ -8,6 +9,8 @@ const LoginScreen = () => {
     const [focusedInput, setFocusedInput] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const navigation = useNavigation<any>();
 
     return (
         <ScrollView
@@ -60,7 +63,10 @@ const LoginScreen = () => {
                     <Text style={styles.forgotPassword}>Forgot password!</Text>
                 </Pressable>
 
-                <Pressable style={({ pressed }) => [styles.loginButton, pressed && styles.loginButtonPressed]}>
+                <Pressable onPress={() => navigation.getParent()?.reset({
+                    index: 0,
+                    routes: [{ name: "Main" }],
+                })} style={({ pressed }) => [styles.loginButton, pressed && styles.loginButtonPressed]}>
                     <Text style={styles.continueText}>Login</Text>
                 </Pressable>
             </View>
