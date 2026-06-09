@@ -1,15 +1,15 @@
-# 🍔 Orix Food — Food Delivery App
+# 🍔Hunger Station — Food Delivery App
 
 A minimal, modern food delivery app built with **Expo** and **React Native**.
 
 ## 📱 Screens
 
-| Login | Home | Food Details |
-| :---: | :---: | :---: |
+|                     Login                     |                     Home                     |                      Food Details                      |
+| :-------------------------------------------: | :------------------------------------------: | :----------------------------------------------------: |
 | <img src="./assets/Login.jpeg" width="220" /> | <img src="./assets/Home.jpeg" width="220" /> | <img src="./assets/Food%20details.jpeg" width="220" /> |
 
-| Search | Cart |
-| :---: | :---: |
+|                     Search                     |                     Cart                     |
+| :--------------------------------------------: | :------------------------------------------: |
 | <img src="./assets/Search.jpeg" width="220" /> | <img src="./assets/Cart.jpeg" width="220" /> |
 
 ## ✨ Features
