@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import GetStartedScreen from '../../screens/OnboardingScreens/GetStartedScreen';
 import AuthTabs from '../tabs/AuthTabs';
 import MainTabs from '../tabs/MainScreensTabs';
+import FoodDetailScreen from '../../screens/MainScreens/FoodDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,7 @@ function MyStack() {
             <Stack.Screen name="GetStarted" component={GetStartedScreen} />
             <Stack.Screen name="Auth" component={AuthTabs} />
             <Stack.Screen name="Main" component={MainTabs} />
+            <Stack.Screen name="FoodDetail" component={FoodDetailScreen} options={{ presentation: 'card', animation: 'slide_from_right' }} />
         </Stack.Navigator>
     )
 };

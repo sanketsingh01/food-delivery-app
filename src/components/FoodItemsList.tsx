@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList, Image, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import { foodData, foodItems } from '../screens/data/FoodItemsData';
 import { useCart } from '../context/CartContext';
@@ -23,6 +24,7 @@ const FoodItemsList = ({ data = foodItems, ListHeaderComponent }: FoodItemsListP
     const cardWidth = (width - H_PADDING * 2 - GAP * (numColumns - 1)) / numColumns;
 
     const { addToCart } = useCart();
+    const navigation = useNavigation<any>();
 
     return (
         <FlatList
@@ -36,7 +38,10 @@ const FoodItemsList = ({ data = foodItems, ListHeaderComponent }: FoodItemsListP
             columnWrapperStyle={{ gap: GAP }}
             ItemSeparatorComponent={() => <View style={{ height: GAP }} />}
             renderItem={({ item }) => (
-                <Pressable style={[styles.card, { width: cardWidth }]}>
+                <Pressable
+                    style={[styles.card, { width: cardWidth }]}
+                    onPress={() => navigation.navigate('FoodDetail', { item })}
+                >
                     <View style={styles.imageWrap}>
                         <Image source={item.image} style={styles.foodImage} />
                         <Pressable style={styles.heartBtn} hitSlop={8}>
